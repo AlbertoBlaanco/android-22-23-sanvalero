@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Skill4</string>
+    <string name="titulo">BIENVENIDO AL EJEMPLO</string>
+    <string name="text_btn_ingresar">Ingresar</string>
 </resources>
