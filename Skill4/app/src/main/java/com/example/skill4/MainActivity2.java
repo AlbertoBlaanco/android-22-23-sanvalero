@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -19,6 +20,8 @@ public class MainActivity2 extends AppCompatActivity {
     RadioButton r2;
     ToggleButton tgbtn;
     TextView edtText;
+    TextView edtText2;
+    Switch switchE;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,8 @@ public class MainActivity2 extends AppCompatActivity {
         r2 = (RadioButton) findViewById(R.id.idRad2);
         tgbtn = (ToggleButton) findViewById(R.id.tgbtn1);
         edtText = (TextView) findViewById(R.id.etSeleccion);
+        edtText2 = (TextView) findViewById(R.id.etSeleccion2);
+        switchE = (Switch) findViewById(R.id.idSwitch);
     }
     public void onclick(View view){
         if(view.getId() == R.id.btn1){
@@ -41,6 +46,13 @@ public class MainActivity2 extends AppCompatActivity {
                 edtText.setText("Boton Off");
             }
 
+        }
+        if(view.getId()==R.id.idSwitch){
+                if(switchE.isChecked()){
+                    edtText2.setText("Esta activado");
+                }else{
+                    edtText2.setText("No esta activado");
+                }
         }
     }
     private void validar(){
