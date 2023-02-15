@@ -11,8 +11,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
-    @GET("pokemon")
-    Call<ArrayList<Pokemon>> getPokemons();
+    /*@GET("pokemon")
+    Call<ArrayList<Pokemon>> getPokemons();*/
 
     /*https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20*/
     @GET("pokemon")
