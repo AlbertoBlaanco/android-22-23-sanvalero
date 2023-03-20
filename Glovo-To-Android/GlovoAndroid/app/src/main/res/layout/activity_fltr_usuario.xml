@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".fltr_usuario.view.FiltrUsuActivity">
+
+    <Spinner
+        android:id="@+id/SpinnerNec"
+
+        android:layout_width="140dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="-166dp"
+        android:labelFor="@id/SpinnerNec" />
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/recyclerFltr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SpinnerNec"
+        android:layout_marginTop="166dp" />
+
+</RelativeLayout>

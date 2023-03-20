@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_necesidades">
+        <item>Tipo</item>
+        <item>Abrasador</item>
+        <item>Japones</item>
+        <item>Indio</item>
+        <item>Pijo</item>
+        <item>Kebab</item>
+
+    </string-array>
+</resources>
