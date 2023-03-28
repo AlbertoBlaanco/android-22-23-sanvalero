@@ -15,9 +15,9 @@ import retrofit2.Response;
 
 public class VerFichaModel implements VerFichaContract.Model {
     @Override
-    public void verFichaRestauranteWS(String nombreRestaurante, onRestauranteListener onRestauranteListener) {
+    public void verFichaRestauranteWS(int idRestaurante, onRestauranteListener onRestauranteListener) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<ArrayList<Restaurante>>call = apiService.getFichaRestaurante(nombreRestaurante);
+        Call<ArrayList<Restaurante>>call = apiService.getFichaRestaurante(idRestaurante);
         call.enqueue(new Callback<ArrayList<Restaurante>>() {
             @Override
             public void onResponse(Call<ArrayList<Restaurante>> call, Response<ArrayList<Restaurante>> response) {

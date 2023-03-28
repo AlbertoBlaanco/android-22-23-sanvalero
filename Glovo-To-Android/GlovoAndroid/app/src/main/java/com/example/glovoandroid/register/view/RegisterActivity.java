@@ -3,6 +3,7 @@ package com.example.glovoandroid.register.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.example.glovoandroid.R;
 import com.example.glovoandroid.entities.Usuario;
 
+import com.example.glovoandroid.login.view.LoginActivity;
 import com.example.glovoandroid.register.RegisterContract;
 import com.example.glovoandroid.register.presenter.RegisterPresenter;
 
@@ -21,7 +23,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     private TextView email;
     private TextView password;
 
-    private Button bt1;
+    private Button signupbtn;
+    private TextView goToLogIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +35,28 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         //initData();
     }
     public void initComponents(){
-        nombre = findViewById(R.id.NombreUsuario);
-        email = findViewById(R.id.EmailUsuario);
-        password = findViewById(R.id.PasswordUsuario);
-        bt1 = findViewById(R.id.btn1);
-
-        bt1.setOnClickListener(new View.OnClickListener() {
+        nombre = findViewById(R.id.username);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        signupbtn = findViewById(R.id.signupbtn);
+        goToLogIn = findViewById(R.id.login);
+        goToLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario user = new Usuario();
-                user.setNombre(String.valueOf(nombre));
-                user.setEmail(String.valueOf(email));
-                user.setPassword(String.valueOf(password));
-                initData(user);
+                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signupbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Usuario user = new Usuario();
+                user.setNombre(String.valueOf(nombre.getText()));
+                user.setEmail(String.valueOf(email.getText()));
+                user.setPassword(String.valueOf(password.getText()));*/
+
+                initData(String.valueOf(nombre.getText()),String.valueOf(password.getText()));
             }
         });
 
@@ -56,8 +68,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     {
         registerPresenter = new RegisterPresenter(this);
     }
-    public void initData(Usuario user){
-        registerPresenter.register(user);
+    public void initData(String nombre, String password){
+        registerPresenter.register(nombre,password);
     }
 
     @Override

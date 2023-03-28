@@ -29,7 +29,7 @@ public class LstRestaurantAdapter extends RecyclerView.Adapter<LstRestaurantAdap
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_restaurant,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_restaurante_nuevo,parent,false);
         return new ViewHolder(view);
     }
 
@@ -67,7 +67,7 @@ public class LstRestaurantAdapter extends RecyclerView.Adapter<LstRestaurantAdap
             //idRestaurante = itemView.findViewById(R.id.ID_RESTAURANTE);
             nombreRestaurante = itemView.findViewById(R.id.NOMBRE2);
             tipoRestaurante = itemView.findViewById(R.id.TIPO2);
-            ventasRestaurante = itemView.findViewById(R.id.VENTAS2);
+            //ventasRestaurante = itemView.findViewById(R.id.);
             puntuacionRestaurante = itemView.findViewById(R.id.PUNTUACION2);
             imagenRestaurante = (ImageView) itemView.findViewById(R.id.IMAGEN);
         }

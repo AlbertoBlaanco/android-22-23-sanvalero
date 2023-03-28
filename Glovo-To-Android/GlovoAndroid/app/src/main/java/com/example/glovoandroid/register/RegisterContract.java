@@ -11,13 +11,13 @@ public interface RegisterContract {
     }
     public interface Presenter{
         //Register del usuario
-        void register(Usuario usuario);
+        void register(String nombre, String password);
     }
     public interface Model{
         interface onRegisterListener{
             void onSuccess(Usuario user);
             void onFailure(String err);
         }
-        void registerWS(Usuario user, RegisterContract.Model.onRegisterListener onRegisterListener);
+        void registerWS(String nombre, String password, RegisterContract.Model.onRegisterListener onRegisterListener);
     }
 }

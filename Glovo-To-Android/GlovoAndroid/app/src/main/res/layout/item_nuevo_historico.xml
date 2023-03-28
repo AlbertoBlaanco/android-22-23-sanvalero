@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:elevation="5dp"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:id="@+id/IMAGEN"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="110dp"
+            android:layout_gravity="end"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/idPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/san_francisco"
+                android:text="Seco De Cabrito"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="120dp"
+                android:layout_height="18dp"
+                android:layout_below="@id/idPedido"
+                android:layout_marginTop="8dp"
+                />
+
+            <TextView
+                android:id="@+id/PRECIO_TOTAL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv1"
+                android:layout_marginTop="-25dp"
+                android:fontFamily="@font/san_francisco"
+                android:textColor="#2e2e2e"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/FECHA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/PRECIO_TOTAL"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/san_francisco"
+                android:textColor="#2e2e2e"
+                android:textSize="14dp" />
+
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

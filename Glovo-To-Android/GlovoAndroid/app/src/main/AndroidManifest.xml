@@ -16,6 +16,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".hst_compras.view.HstComprasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.view.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".carro_compra.view.CarroCompraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".verCarta.view.verCartaActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ver_ficha.view.VerFichaActivity"
             android:exported="false" />
         <activity

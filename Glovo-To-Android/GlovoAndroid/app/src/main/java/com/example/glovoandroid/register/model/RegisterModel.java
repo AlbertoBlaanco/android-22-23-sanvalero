@@ -17,9 +17,9 @@ import retrofit2.Response;
 public class RegisterModel implements RegisterContract.Model {
 
     @Override
-    public void registerWS(Usuario user, onRegisterListener onRegisterListener) {
+    public void registerWS(String nombre, String password, onRegisterListener onRegisterListener) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<Usuario> call = apiService.sendRegisterData(user);
+        Call<Usuario> call = apiService.sendRegisterData(nombre,password);
         call.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {

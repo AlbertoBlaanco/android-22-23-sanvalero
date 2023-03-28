@@ -19,8 +19,8 @@ public class RegisterPresenter implements RegisterContract.Presenter {
     }
 
     @Override
-    public void register(Usuario usuario) {
-        registerModel.registerWS(usuario, new RegisterContract.Model.onRegisterListener() {
+    public void register(String nombre, String password) {
+        registerModel.registerWS(nombre,password, new RegisterContract.Model.onRegisterListener() {
             @Override
             public void onSuccess(Usuario user) {
                 if(user != null){

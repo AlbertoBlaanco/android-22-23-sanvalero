@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.example.glovoandroid.entities.Restaurante;
 import com.example.glovoandroid.fltr_usuario.view.FiltrUsuActivity;
+import com.example.glovoandroid.login.view.LoginActivity;
 import com.example.glovoandroid.lst_restaurantes.LstRestaurantContract;
 import com.example.glovoandroid.lst_restaurantes.view.LstRestaurantActivity;
 import com.example.glovoandroid.lst_restaurantes.view.LstRestaurantAdapter;
@@ -27,22 +28,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initComponents();
+        //setContentView(R.layout.activity_main);
+        //initComponents();
+        Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+        startActivity(intent);
     }
     public void initComponents(){
         //Intent intent = new Intent(getBaseContext(),LstRestaurantActivity.class);
         //Intent intent = new Intent(getBaseContext(), FiltrUsuActivity.class);
-        bt1 = findViewById(R.id.button1);
+        /*bt1 = findViewById(R.id.button1);
         bt2 = findViewById(R.id.button2);
-        bt3 = findViewById(R.id.button3);
+        bt3 = findViewById(R.id.button3);*/
         //Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
         //startActivity(intent);
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent;
+        /*Intent intent;
         switch (view.getId()) {
             case R.id.button1:
                 //miIntent = new Intent(MainActivity.this, LstRestaurantActivity.class);
@@ -61,6 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
-        startActivity(intent);
+        startActivity(intent);*/
     }
 }

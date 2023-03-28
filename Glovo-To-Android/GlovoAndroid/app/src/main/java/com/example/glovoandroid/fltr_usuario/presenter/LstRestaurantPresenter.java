@@ -26,9 +26,6 @@ public class LstRestaurantPresenter implements FiltroNecUsuarioContract.Presente
 
                     if(lstRestaurante!=null && lstRestaurante.size()>0){
                         view.onSuccessLstRestaurant(lstRestaurante);
-
-                    }else{
-                        view.onSuccessLstRestaurant(lstRestaurante);
                     }
                 }
 

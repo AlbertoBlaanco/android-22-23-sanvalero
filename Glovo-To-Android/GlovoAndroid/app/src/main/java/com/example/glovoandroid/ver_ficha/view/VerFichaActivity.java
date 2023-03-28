@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.glovoandroid.R;
+import com.example.glovoandroid.entities.Plato;
 import com.example.glovoandroid.entities.Restaurante;
 import com.example.glovoandroid.lst_restaurantes.presenter.LstRestaurantPresenter;
 import com.example.glovoandroid.lst_restaurantes.view.LstRestaurantAdapter;
@@ -30,25 +32,43 @@ public class VerFichaActivity extends AppCompatActivity implements VerFichaContr
     private TextView puntuacionRestaurante;
     private ImageView imagenRestaurante;
 
+    private ArrayList<Plato> carroCompras;
+    private TextView tvCantProductos;
+    private ImageView btnVolver;
+    private Button btnVerCarro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_ficha);
         Bundle extras = getIntent().getExtras();
-        String nombre = extras.getString("nombreRestaurante");
+        int idRestaurante = extras.getInt("idRestaurante");
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         initComponents();
         initPresenter();
-        initData(nombre);
+        initData(idRestaurante);
     }
     public void initComponents(){
         recyclerView = (RecyclerView) findViewById(R.id.recyclerFicha);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        tvCantProductos = findViewById(R.id.cantProductos);
+        if(getIntent().getSerializableExtra("CarroCompras") != null){
+            carroCompras = (ArrayList<Plato>) getIntent().getSerializableExtra("CarroCompras");
+
+            tvCantProductos.setText(getIntent().getExtras().getString("tvCantProductos"));
+
+        }
 
         nombreRestaurante = findViewById(R.id.NOMBRE2);
         tipoRestaurante = findViewById(R.id.TIPO2);
-        ventasRestaurante = findViewById(R.id.VENTAS2);
+        //ventasRestaurante = findViewById(R.id.VENTAS2);
         puntuacionRestaurante = findViewById(R.id.PUNTUACION2);
         imagenRestaurante = (ImageView) findViewById(R.id.IMAGEN);
+        btnVolver = findViewById(R.id.btnVolver);
+
+        btnVerCarro = (Button) findViewById(R.id.btnVerCarro);
 
 
     }
@@ -56,14 +76,14 @@ public class VerFichaActivity extends AppCompatActivity implements VerFichaContr
     {
         verFichaPresenter = new VerFichaPresenter(this);
     }
-    public void initData(String nombreRestaurante) {
-        verFichaPresenter.verFichaRestaurante(nombreRestaurante); //SEL
+    public void initData(int idRestaurante) {
+        verFichaPresenter.verFichaRestaurante(idRestaurante); //SEL
 
     }
 
     @Override
-    public void onSuccessRestaurante(ArrayList<Restaurante> restaurante) {
-        LstRestaurantAdapter adapter = new LstRestaurantAdapter(getBaseContext(),restaurante);
+    public void onSuccessRestaurante(ArrayList<Restaurante> restaurante, int idRestaurante) {
+        VerFichaAdapter adapter = new VerFichaAdapter(getBaseContext(),restaurante, btnVolver,carroCompras,btnVerCarro,tvCantProductos,idRestaurante,getIntent().getExtras().getInt("idUser"));
         recyclerView.setAdapter(adapter);
     }
 

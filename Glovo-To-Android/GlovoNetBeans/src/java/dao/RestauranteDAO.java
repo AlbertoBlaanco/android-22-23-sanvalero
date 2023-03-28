@@ -23,7 +23,7 @@ public class RestauranteDAO {
     private SQLTools miMotor = null;
     private static final String SELECT_RESTAURANTE_VENTAS = "SELECT * FROM restaurante ORDER by restaurante.Ventas DESC LIMIT 10";
 
-    private static final String SELECT_TIPO_INICIO = "SELECT * FROM restaurante WHERE Nombre = '";
+    private static final String SELECT_TIPO_INICIO = "SELECT * FROM restaurante WHERE id_Restaurante = ";
     private static final String SELECT_TIPO_FINAL = "';";
 
     private static final String SQL_FINDALL = "SELECT * FROM `restaurante` WHERE 1=1 ";
@@ -65,10 +65,10 @@ public class RestauranteDAO {
         return lstRestaurantes;
     }
 
-    public Restaurante findOne(String nombreRestaurante) {
-        Restaurante restaurante = new Restaurante();
+    public Restaurante findOne(Restaurante restaurante) {
+        Restaurante rest = new Restaurante();
 
-        String sql = SELECT_TIPO_INICIO + nombreRestaurante + SELECT_TIPO_FINAL;
+        String sql = SELECT_TIPO_INICIO + restaurante.getID_RESTAURANTE();
 
         try {
             //1º) 
@@ -78,12 +78,12 @@ public class RestauranteDAO {
                     executeQuery(sql);
             if (resultset != null) {
                 while (resultset.next()) {
-                    restaurante.setID_RESTAURANTE(resultset.getInt(1));
-                    restaurante.setNOMBRE(resultset.getString(2));
-                    restaurante.setTIPO(resultset.getString(3));
-                    restaurante.setVENTAS(resultset.getInt(4));
-                    restaurante.setPUNTUACION(resultset.getInt(5));
-                    restaurante.setIMAGEN(resultset.getString(6));
+                    rest.setID_RESTAURANTE(resultset.getInt(1));
+                    rest.setNOMBRE(resultset.getString(2));
+                    rest.setTIPO(resultset.getString(3));
+                    rest.setVENTAS(resultset.getInt(4));
+                    rest.setPUNTUACION(resultset.getInt(5));
+                    rest.setIMAGEN(resultset.getString(6));
                 }
             }
         } catch (SQLException e) {
@@ -91,7 +91,7 @@ public class RestauranteDAO {
         } finally {
             miMotor.disconnect();
         }
-        return restaurante;
+        return rest;
     }
 
     public ArrayList<Restaurante> findAllAk(Restaurante bean) {
@@ -150,4 +150,5 @@ public class RestauranteDAO {
         return lstRestaurantes;
     }
 
+ 
 }

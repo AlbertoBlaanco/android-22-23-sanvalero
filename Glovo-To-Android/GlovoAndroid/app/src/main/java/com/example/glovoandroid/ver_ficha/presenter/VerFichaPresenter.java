@@ -19,12 +19,12 @@ public class VerFichaPresenter implements VerFichaContract.Presenter {
 
 
     @Override
-    public void verFichaRestaurante(String nombreRestaurante) {
-            verFichaModel.verFichaRestauranteWS(nombreRestaurante, new VerFichaContract.Model.onRestauranteListener() {
+    public void verFichaRestaurante(int idRestaurante) {
+            verFichaModel.verFichaRestauranteWS(idRestaurante, new VerFichaContract.Model.onRestauranteListener() {
                 @Override
                 public void onSuccess(ArrayList<Restaurante> restaurante) {
 
-                        view.onSuccessRestaurante(restaurante);
+                        view.onSuccessRestaurante(restaurante,idRestaurante);
 
                 }
 

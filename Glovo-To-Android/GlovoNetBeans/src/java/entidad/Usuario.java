@@ -5,12 +5,22 @@
  */
 package entidad;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author alber
  */
 public class Usuario {
 
+    /*@SerializedName("nombre")
+    private String nombre;
+    @SerializedName("email")
+    private String email;
+    @SerializedName("password")
+    private String password;
+     */
+    private int idUser;
     private String nombre;
     private String email;
     private String password;
@@ -19,10 +29,19 @@ public class Usuario {
 
     }
 
-    public Usuario(String nommbre, String email, String password) {
+    public Usuario(int idUser,String nommbre, String email, String password) {
+        this.idUser = idUser;
         this.nombre = nommbre;
         this.email = email;
         this.password = password;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getNombre() {
@@ -49,15 +68,20 @@ public class Usuario {
         this.password = password;
     }
 
-    public static String fromArrayListToJson(Usuario user) {
+   
+
+    public static String fromArrayListToJson(ArrayList<Usuario> lstUsuarios) {
         String resp = "[";
+        for (Usuario user : lstUsuarios) {
+            resp += "{"
+                    + "\"ID_USER\":\"" + user.getIdUser() + "\","
+                    + "\"NOMBRE\":\"" + user.getNombre() + "\","
+                    + "\"PASSWORD\":\"" + user.getPassword() + "\", "
+                    + "\"EMAIL\":\"" + user.getEmail() + "\"}";
+            resp += ",";
 
-        resp += "{"
-                + "\"NOMBRE\":\"" + user.getNombre() + "\","
-                + "\"PASSWORD\":\"" + user.getPassword() + "\", "
-                + "\"EMAIL\":\"" + user.getEmail() + "\"}";
-        resp += ",";
-
+        }
+        resp = resp.substring(0, resp.length() - 1);
         resp += "]";
         return resp;
     }

@@ -1,18 +1,28 @@
 package com.example.glovoandroid.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Usuario {
+
+    @SerializedName("ID_USER")
+    private int idUser;
+    @SerializedName("NOMBRE")
     private String nombre;
+    @SerializedName("EMAIL")
     private String email;
+    @SerializedName("PASSWORD")
     private String password;
+
 
     public Usuario() {
 
     }
 
-    public Usuario(String nommbre, String email, String password) {
+    public Usuario(int idUser,String nommbre, String email, String password) {
         this.nombre = nommbre;
         this.email = email;
         this.password = password;
+        this.idUser = idUser;
     }
 
     public String getNombre() {
@@ -37,5 +47,13 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

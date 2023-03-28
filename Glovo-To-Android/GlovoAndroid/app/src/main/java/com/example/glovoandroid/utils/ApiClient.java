@@ -7,9 +7,12 @@ public class ApiClient {
     /*public static final String BASE_URL =
             "http://172.21.3.34:8080/RakutenTV/webresources/";*/
 
-    public static final String BASE_URL1 =
-            //"http://192.168.1.41:8888/GlovoNetBeans/webresources/";
-    "http://192.168.104.78:8080/GlovoNetBeans/webresources/";
+    public static final String BASE_URL1 = //"http://192.168.104.69:8080/GlovoNetBeans/webresources/";
+             "http://192.168.1.37:8888/GlovoNetBeans/webresources/";
+            //"http://192.168.104.78:8080/GlovoNetBeans/webresources/"; -> Fila de atrás
+
+
+
 
 
 

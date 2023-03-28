@@ -23,6 +23,7 @@ public class UsuarioDAO implements IDAO<Usuario, Integer> {
 
     private final String SQL_USER = "INSERT INTO usuario SET ";
     private final String SQL_FINDALL = "SELECT * FROM `usuario` WHERE 1=1 ";
+    private static final String SELECT_LOGIN_INICIO = "SELECT * FROM `usuario` WHERE ";
 
     public UsuarioDAO() {
         this.miMotor = new MotorMySQL();
@@ -113,4 +114,37 @@ public class UsuarioDAO implements IDAO<Usuario, Integer> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public ArrayList<Usuario> findOne(Usuario bean) {
+        
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        String sql = SELECT_LOGIN_INICIO;
+
+        try {
+            //1º) 
+            miMotor.connect();
+            if (bean != null) {
+                sql += "Nombre = '" + bean.getNombre() + "'";
+                sql +=  " AND password = " + bean.getPassword();
+
+            }
+            ResultSet rs = miMotor.
+                    executeQuery(sql);
+            if (rs != null) {
+                while (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setIdUser(rs.getInt(1));
+                    usuario.setNombre(rs.getString(2));
+                    usuario.setEmail(rs.getString(3));
+                    usuario.setPassword(rs.getString(4));
+                    usuarios.add(usuario);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            miMotor.disconnect();
+        }
+        return usuarios;
+    }
+      
 }
